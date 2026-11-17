@@ -89,7 +89,7 @@ Este é o método recomendado para uso diário. A extensão fica instalada perma
 
 #### Passo 2: Instalar a Extensão no Firefox (.xpi)
 1. Acesse a página de [Releases](https://github.com/ph-py/TaiLung-dwnlr-helper/releases) do repositório.
-2. Baixe o arquivo **`.xpi`** mais recente (ex: `tailung_downloader-0.1.2.xpi`).
+2. Baixe o arquivo **`.xpi`** mais recente (ex: `tailung_downloader-0.1.3.xpi`).
 3. Arraste o arquivo `.xpi` para dentro de qualquer janela do Firefox (ou abra o arquivo pelo navegador) e clique em **"Adicionar"**.
 
 Pronto! A extensão **TaiLung Downloader** já estará instalada e pronta para uso definitivo.

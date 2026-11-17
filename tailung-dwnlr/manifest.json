@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "TaiLung Downloader",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Downloader de transmissões em qualidade (1080p HD) do PANDA VIDEO integrado ao FFmpeg.",
   "browser_specific_settings": {
     "gecko": {
