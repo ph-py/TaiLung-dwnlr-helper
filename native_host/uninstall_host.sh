@@ -12,3 +12,4 @@ else
 fi
 
 echo "Desinstalação do Native Host concluída."
+
