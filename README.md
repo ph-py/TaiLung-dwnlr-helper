@@ -1,4 +1,4 @@
-# TaiLung Downloader
+# TaiLung Downloader Helper
 
 <p align="center">
   <img src="tailung-dwnlr/tai_lung-128.png" alt="TaiLung Downloader" width="128" height="128" />
