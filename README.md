@@ -4,21 +4,25 @@
   <img src="tailung-dwnlr/tai_lung-128.png" alt="TaiLung Downloader" width="128" height="128" />
 </p>
 
-Extensão para Mozilla Firefox no **Linux** integrada ao **FFmpeg nativo** para download de transmissões em qualidade (1080p Full HD) do **Panda Video**.
+<p align="center">
+  <b>English</b> | <a href="README.pt-br.md">Português</a>
+</p>
 
-Funciona de forma independente em qualquer site da web ou diretamente no link do player.
+Mozilla Firefox extension for **Linux** integrated with **native FFmpeg** for downloading high-quality (1080p Full HD) streams from **Panda Video**.
+
+Works independently on any web page or directly from the player URL.
 
 ---
 
-## 💻 Suporte e Requisitos de Sistema
+## 💻 System Support & Requirements
 
-* **Sistema Operacional:** Linux (Debian, Ubuntu, Linux Mint);
-* **Navegador Suportado:** Mozilla Firefox;
-* **Requisitos:**
-  1. **Python 3** (padrão no Linux);
-  2. **FFmpeg** (para multiplexar trilhas de áudio e vídeo em alta definição sem perdas).
+* **Operating System:** Linux (Debian, Ubuntu, Linux Mint);
+* **Supported Browser:** Mozilla Firefox;
+* **Requirements:**
+  1. **Python 3** (default on Linux);
+  2. **FFmpeg** (to multiplex audio and video tracks in lossless high definition).
 
-### Como instalar os requisitos no terminal (Ubuntu / Debian / Mint):
+### How to install requirements via terminal (Ubuntu / Debian / Mint):
 ```bash
 sudo apt update
 sudo apt install -y python3 ffmpeg
@@ -26,34 +30,36 @@ sudo apt install -y python3 ffmpeg
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```text
 TaiLung-dwnlr-helper/
-├── native_host/                    # Comunicação nativa Linux com o FFmpeg
-│   ├── tailung_host.py             # Script de download (suporta fMP4 e .ts)
-│   ├── tailung_helper.json         # Manifesto do host nativo para o Firefox
-│   └── install_host.sh             # Instalador automático com detecção de caminho
+├── native_host/                    # Linux native messaging host with FFmpeg
+│   ├── tailung_host.py             # Download engine (supports fMP4 and .ts)
+│   ├── tailung_helper.json         # Firefox native messaging host manifest
+│   └── install_host.sh             # Automatic installer with path detection
 │
-├── tailung-dwnlr/                   # Extensão WebExtension para o Firefox
-│   ├── manifest.json               # Configurações e permissões (ID: tailung-dwnlr@local)
-│   ├── background.js               # Gerenciador de Native Messaging e tokens
-│   ├── content.js                  # Detecção universal (iframes, páginas diretas e SPA)
-│   ├── content.css                 # Estilo moderno do widget flutuante
-│   ├── popup.html                  # Painel de controle no menu do navegador com entrada manual
-│   ├── popup.js                    # Lógica de controle e barra de progresso em tempo real
+├── tailung-dwnlr/                   # Firefox WebExtension
+│   ├── manifest.json               # Configuration and permissions (ID: tailung-dwnlr@local)
+│   ├── background.js               # Native messaging and token manager
+│   ├── content.js                  # Universal detection (iframes, direct pages, SPA)
+│   ├── content.css                 # Modern floating widget styles
+│   ├── popup.html                  # Browser action popup with manual input
+│   ├── popup.js                    # UI logic and real-time progress bar
 │   ├── tai_lung-48.png
 │   └── tai_lung-128.png
 │
-└── README.md                       # Este guia completo de instalação e uso
+├── README.md                       # Main documentation (English)
+├── README.pt-br.md                 # Documentation in Portuguese
+└── LICENSE                         # MIT License
 ```
 
 ---
 
-## 🚀 Instalação Passo a Passo
+## 🚀 Step-by-Step Installation
 
-### Passo 1: Registrar o Host Nativo no Firefox (Linux)
-Abra o seu terminal na pasta raiz do projeto e execute o instalador:
+### Step 1: Register the Native Host in Firefox (Linux)
+Open your terminal in the project root directory and run the installer:
 
 ```bash
 bash native_host/install_host.sh
@@ -61,71 +67,72 @@ bash native_host/install_host.sh
 
 ---
 
-### Passo 2: Carregar a Extensão no Firefox
-1. Abra o Mozilla Firefox e acesse na barra de endereços:
+### Step 2: Load the Extension in Firefox
+1. Open Mozilla Firefox and navigate to:
    ```text
    about:debugging#/runtime/this-firefox
    ```
-2. Clique no botão **"Carregar extensão temporária..."** (*Load Temporary Add-on...*);
-3. Navegue até o diretório do projeto e selecione o arquivo:
+2. Click on the **"Load Temporary Add-on..."** button;
+3. Browse to the project directory and select the file:
    ```text
    tailung-dwnlr/manifest.json
    ```
 
-Pronto! A extensão **TaiLung Downloader** já estará ativa e pronta para uso.
+Done! The **TaiLung Downloader** extension is now active and ready for use.
 
 ---
 
-## 🎯 Como Usar
+## 🎯 How to Use
 
-### Opção 1: Detecção Automática via Widget Flutuante na Página
-1. Ao abrir qualquer página na web que contenha um vídeo compatível (seja via iframe, embutido ou link direto do player), um card flutuante surgirá no **canto inferior direito** da tela com o ícone do TaiLung (`TaiLung (1080p)`).
-2. O sistema extrai o título original e verifica se o FFmpeg está operacional.
-3. Clique em **`⬇ Baixar (1080p HD)`**.
-4. O progresso será exibido em tempo real na barra.
-
----
-
-### Opção 2: Pelo Menu Popup na Barra de Ferramentas
-1. Clique no ícone da extensão no topo direito do Firefox (dica: clique com o botão direito e selecione **"Fixar na barra de ferramentas"**).
-2. O popup mostrará:
-   * Status do FFmpeg (`FFmpeg: OK`);
-   * Nome do vídeo identificado na aba ativa;
-   * Botão principal **`⬇ Baixar (1080p HD)`**.
+### Option 1: Automatic Detection via In-Page Floating Widget
+1. When browsing any web page containing a compatible video (embedded, in an iframe, or direct player URL), a floating card will appear in the **bottom-right corner** of the screen with the TaiLung icon (`TaiLung (1080p)`).
+2. The system automatically extracts the original title and verifies that FFmpeg is operational.
+3. Click **`⬇ Baixar (1080p HD)`**.
+4. Real-time download progress will be shown in the progress bar.
 
 ---
 
-### Opção 3: Baixar Colando o Link Manualmente (Para qualquer link ou UUID)
-Se a página possuir proteções ou o iframe estiver oculto:
-1. Abra o menu popup da extensão;
-2. Na seção **"Ou Cole o Link / UUID do Vídeo"**, cole a URL do player ou apenas o UUID do vídeo (ex: `https://player-vz-xxxxxx.tv.pandavideo.com.br/embed/?v=dc308456-1453-4a25-bf26-8b57434aa230`);
-3. Clique em **`⬇ Baixar por URL Manual`**.
-4. A extensão buscará o manifesto oficial, os metadados do vídeo e iniciará o download em 1080p.
+### Option 2: Via Toolbar Popup Menu
+1. Click the extension icon in the top-right toolbar of Firefox (tip: right-click and select **"Pin to Toolbar"**).
+2. The popup displays:
+   * FFmpeg status (`FFmpeg: OK`);
+   * Name of the video detected in the active tab;
+   * Main action button **`⬇ Baixar (1080p HD)`**.
 
 ---
 
-## ⏹ Cancelamento de Download
-* Durante qualquer download, um botão vermelho **`⏹ Cancelar Download`** fica disponível.
-* Ao clicar nele, o download na CDN é interrompido, o processo do FFmpeg é finalizado e os arquivos temporários são deletados imediatamente.
+### Option 3: Download by Pasting URL Manually (For any link or UUID)
+If the page has custom overlays or the iframe is hidden:
+1. Open the extension popup menu;
+2. In the **"Ou Cole o Link / UUID do Vídeo"** section, paste the player URL or video UUID (e.g., `https://player-vz-xxxxxx.tv.pandavideo.com.br/embed/?v=dc308456-1453-4a25-bf26-8b57434aa230`);
+3. Click **`⬇ Baixar por URL Manual`**;
+4. The extension fetches the official manifest, video metadata, and initiates the 1080p download.
 
 ---
 
-## 💾 Onde os Vídeos são Salvos?
-Todos os arquivos finalizados em resolução máxima (1080p) são salvos organizados na pasta:
+## ⏹ Canceling Downloads
+* During any download, a red **`⏹ Cancelar Download`** button remains available.
+* Clicking it immediately stops CDN downloads, terminates the FFmpeg process, and cleans up temporary files.
+
+---
+
+## 💾 Where are Videos Saved?
+All completed videos in full resolution (1080p) are organized and saved to:
 ```text
-~/Downloads/TaiLung/{Nome_do_Video}_1080p.mp4
+~/Downloads/TaiLung/{Video_Title}_1080p.mp4
 ```
 
 ---
 
-## 🛡️ Compatibilidade de Formatos
-Esta extensão implementa um motor inteligente que reconhece e baixa os formatos existentes na CDN:
-1. **fMP4 Moderno (Byte-Range):** Fragmentos temporais baixados via HTTP Range (`video.m4s` e `audio.m4s`);
-2. **MPEG-TS Tradicional:** Segmentos clássicos `.ts` sequenciais.
-Em ambos os formatos, o FFmpeg nativo realiza a multiplexação limpa em container MP4 sem recodificação de vídeo (velocidade máxima).
+## 🛡️ Format Compatibility
+This extension implements an intelligent download engine supporting CDN formats:
+1. **Modern fMP4 (Byte-Range):** Fragmented streams downloaded via HTTP Range (`video.m4s` and `audio.m4s`);
+2. **Traditional MPEG-TS:** Sequential classic `.ts` segments.
+In both formats, native FFmpeg performs lossless remuxing into a clean MP4 container without video re-encoding (maximum speed).
 
 ---
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença [MIT](LICENSE) - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+This project is licensed under the [MIT](LICENSE) License - see the [LICENSE](LICENSE) file for details.
+
