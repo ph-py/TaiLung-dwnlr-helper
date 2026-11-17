@@ -317,7 +317,7 @@ def executar_download_completo(master_playlist_url: str, pullzone: str, titulo: 
 
         if audio_url and arquivo_audio_tmp.exists():
             cmd = [
-                caminho_ffmpeg, "-y",
+                caminho_ffmpeg, "-nostdin", "-y",
                 "-i", str(arquivo_video_tmp),
                 "-i", str(arquivo_audio_tmp),
                 "-c", "copy",
@@ -327,7 +327,7 @@ def executar_download_completo(master_playlist_url: str, pullzone: str, titulo: 
         else:
             # Caso a trilha de vídeo já contenha áudio multiplexado (.ts único)
             cmd = [
-                caminho_ffmpeg, "-y",
+                caminho_ffmpeg, "-nostdin", "-y",
                 "-i", str(arquivo_video_tmp),
                 "-c", "copy",
                 "-movflags", "+faststart",
@@ -341,6 +341,7 @@ def executar_download_completo(master_playlist_url: str, pullzone: str, titulo: 
 
         current_ffmpeg_proc = subprocess.Popen(
             cmd,
+            stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             **extra_popen_args
