@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+
+# Arquivos temporários e builds
+*.tmp
+*.dat
+*.mp4
+*.m4s
+*.ts
+*.zip
+*.xpi
+
+# SO / Editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
+

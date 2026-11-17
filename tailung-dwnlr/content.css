@@ -1,0 +1,149 @@
+#tailung-floating-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 310px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  z-index: 2147483647;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#tailung-floating-widget.minimized {
+  width: auto;
+  min-width: 170px;
+}
+
+#tailung-floating-widget.minimized #pv-body {
+  display: none;
+}
+
+#pv-header {
+  background-color: #1e293b;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+}
+
+#pv-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#pv-close {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+#pv-close:hover {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+#pv-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#pv-video-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+#pv-action-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #334155;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+#pv-action-btn.ready {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+}
+
+#pv-action-btn.ready:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+#pv-action-btn.error {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+#pv-action-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+#pv-cancel-btn {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ef4444;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  transition: all 0.2s;
+}
+
+#pv-cancel-btn:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+#pv-progress-container {
+  width: 100%;
+  height: 6px;
+  background-color: #334155;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#pv-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+#pv-status-text {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.4;
+  word-break: break-word;
+}
+

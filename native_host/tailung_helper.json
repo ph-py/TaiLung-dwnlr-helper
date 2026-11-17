@@ -1,0 +1,9 @@
+{
+  "name": "tailung_helper",
+  "description": "TaiLung Downloader Host",
+  "path": "<CAMINHO_ABSOLUTO_CONFIGURADO_PELO_INSTALL_HOST_SH>/tailung_host.py",
+  "type": "stdio",
+  "allowed_extensions": [
+    "tailung-dwnlr@local"
+  ]
+}

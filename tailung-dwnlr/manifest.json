@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "TaiLung Downloader",
+  "version": "0.1.1b",
+  "description": "Downloader de transmissões em qualidade (1080p HD) do PANDA VIDEO integrado ao FFmpeg.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tailung-dwnlr@local"
+    }
+  },
+  "permissions": [
+    "nativeMessaging",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "48": "tai_lung-48.png",
+    "128": "tai_lung-128.png"
+  },
+  "browser_action": {
+    "default_icon": "tai_lung-48.png",
+    "default_title": "TaiLung Downloader",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "tai_lung-48.png"
+  ]
+}
