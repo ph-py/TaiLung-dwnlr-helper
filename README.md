@@ -1,4 +1,4 @@
-# TaiLung Downloader Helper
+# TaiLung Downloader
 
 <p align="center">
   <img src="tailung-dwnlr/tai_lung-128.png" alt="TaiLung Downloader" width="128" height="128" />
@@ -8,7 +8,7 @@
   <b>English</b> | <a href="README.pt-br.md">Português</a>
 </p>
 
-Mozilla Firefox extension for **Linux** integrated with **native FFmpeg** for downloading high-quality (1080p Full HD) streams from **Panda Video**.
+Cross-platform Mozilla Firefox extension for **Linux & Windows** integrated with **native FFmpeg** for downloading high-quality (1080p Full HD) streams from **Panda Video**.
 
 Works independently on any web page or directly from the player URL.
 
@@ -16,17 +16,28 @@ Works independently on any web page or directly from the player URL.
 
 ## 💻 System Support & Requirements
 
-* **Operating System:** Linux (Debian, Ubuntu, Linux Mint);
+* **Operating System:** Linux (Ubuntu, Debian, Mint, Fedora, Arch) and Windows (10, 11);
 * **Supported Browser:** Mozilla Firefox;
 * **Requirements:**
-  1. **Python 3** (default on Linux);
+  1. **Python 3**
   2. **FFmpeg** (to multiplex audio and video tracks in lossless high definition).
 
-### How to install requirements via terminal (Ubuntu / Debian / Mint):
+### Installing prerequisites:
+
+#### Linux (Ubuntu / Debian / Mint):
 ```bash
 sudo apt update
 sudo apt install -y python3 ffmpeg git
 ```
+
+#### Windows:
+* **Python 3:** Download from [python.org](https://www.python.org/) (ensure **"Add python.exe to PATH"** is checked during setup).
+* **FFmpeg:** Install via Windows Terminal / PowerShell:
+  ```powershell
+  winget install Gyan.FFmpeg
+  ```
+  *(or download from [ffmpeg.org](https://www.ffmpeg.org/) and add the `bin` directory to your system PATH).*
+* **Git:** Install via `winget install Git.Git` or download from [git-scm.com](https://git-scm.com/).
 
 ---
 
@@ -34,10 +45,14 @@ sudo apt install -y python3 ffmpeg git
 
 ```text
 TaiLung-dwnlr-helper/
-├── native_host/                    # Linux native messaging host with FFmpeg
+├── native_host/                    # Native messaging host with FFmpeg (Linux & Windows)
 │   ├── tailung_host.py             # Download engine (supports fMP4 and .ts)
+│   ├── tailung_host.bat            # Windows execution wrapper
 │   ├── tailung_helper.json         # Firefox native messaging host manifest
-│   └── install_host.sh             # Automatic installer with path detection
+│   ├── install_host.sh             # Linux automated installer
+│   ├── install_host.bat            # Windows automated installer
+│   ├── uninstall_host.sh           # Linux uninstaller
+│   └── uninstall_host.bat          # Windows uninstaller
 │
 ├── tailung-dwnlr/                   # Firefox WebExtension
 │   ├── manifest.json               # Configuration and permissions (ID: tailung-dwnlr@local)
@@ -62,23 +77,20 @@ TaiLung-dwnlr-helper/
 
 This is the recommended method for regular use. The extension remains permanently installed across Firefox restarts without requiring Developer Mode or `about:debugging`.
 
-1. **Install Prerequisites (Linux):**
-   ```bash
-   sudo apt update && sudo apt install -y python3 ffmpeg git
-   ```
+#### Step 1: Register the Native Host
+* **On Linux:**
+  ```bash
+  git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
+  cd TaiLung-dwnlr-helper
+  bash native_host/install_host.sh
+  ```
+* **On Windows:**
+  Clone or download the repository, open the `native_host` folder, and **double-click `install_host.bat`** (or run `install_host.bat` from Command Prompt).
 
-2. **Register the Native Host (Linux):**
-   Clone the repository and run the automated installer:
-   ```bash
-   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
-   cd TaiLung-dwnlr-helper
-   bash native_host/install_host.sh
-   ```
-
-3. **Install the Firefox Extension (.xpi):**
-   * Go to the [Releases](https://github.com/ph-py/TaiLung-dwnlr-helper/releases) page.
-   * Download the latest **`.xpi`** file (e.g., `tailung_downloader-0.1.1.xpi`).
-   * Drag and drop the `.xpi` file into any Firefox window (or open it with Firefox) and click **"Add"**.
+#### Step 2: Install the Firefox Extension (.xpi)
+1. Go to the [Releases](https://github.com/ph-py/TaiLung-dwnlr-helper/releases) page.
+2. Download the latest **`.xpi`** file (e.g., `tailung_downloader-0.1.2.xpi`).
+3. Drag and drop the `.xpi` file into any Firefox window (or open it with Firefox) and click **"Add"**.
 
 Done! The **TaiLung Downloader** extension is permanently installed and ready to use.
 
@@ -88,12 +100,9 @@ Done! The **TaiLung Downloader** extension is permanently installed and ready to
 
 Use this method if you want to inspect, modify, or develop features for the extension:
 
-1. **Clone and Setup the Native Host:**
-   ```bash
-   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
-   cd TaiLung-dwnlr-helper
-   bash native_host/install_host.sh
-   ```
+1. **Setup the Native Host:**
+   * **Linux:** `bash native_host/install_host.sh`
+   * **Windows:** Double-click `native_host/install_host.bat`
 
 2. **Load Temporary Add-on in Firefox:**
    * Open Mozilla Firefox and navigate to:

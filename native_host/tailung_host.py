@@ -2,7 +2,7 @@
 """
 TaiLung Native Host
 Comunica com a extensão Firefox tailung-dwnlr via Native Messaging (stdin/stdout).
-Suporta fMP4 (Byte-Range) e MPEG-TS (.ts), com multiplexação via FFmpeg nativo do Linux.
+Suporta fMP4 (Byte-Range) e MPEG-TS (.ts), com multiplexação via FFmpeg nativo (Linux e Windows).
 """
 
 import json
@@ -15,13 +15,23 @@ import string
 import struct
 import subprocess
 import sys
+import tempfile
 import threading
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-# Configuração de Logs
-LOG_FILE = Path("/tmp/tailung_host.log")
+# Configuração de modo binário no Windows para stdin/stdout
+if sys.platform == "win32":
+    try:
+        import msvcrt
+        msvcrt.setmode(sys.stdin.fileno(), os.O_BINARY)
+        msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY)
+    except Exception:
+        pass
+
+# Configuração de Logs (compatível com Linux /tmp e Windows %TEMP%)
+LOG_FILE = Path(tempfile.gettempdir()) / "tailung_host.log"
 logging.basicConfig(
     filename=str(LOG_FILE),
     level=logging.DEBUG,
@@ -233,7 +243,7 @@ def executar_download_completo(master_playlist_url: str, pullzone: str, titulo: 
     caminho_ffmpeg = shutil.which("ffmpeg")
     if not caminho_ffmpeg:
         logging.error("FFmpeg não encontrado no PATH.")
-        enviar_mensagem({"status": "ERROR", "message": "FFmpeg não encontrado. Instale via 'sudo apt install ffmpeg'."})
+        enviar_mensagem({"status": "ERROR", "message": "FFmpeg não encontrado. Certifique-se de que o FFmpeg está instalado e no PATH do sistema."})
         return
 
     # Pasta padrão de saída: ~/Downloads/TaiLung
@@ -325,7 +335,16 @@ def executar_download_completo(master_playlist_url: str, pullzone: str, titulo: 
             ]
 
         logging.info(f"Executando FFmpeg: {' '.join(cmd)}")
-        current_ffmpeg_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        extra_popen_args = {}
+        if sys.platform == "win32":
+            extra_popen_args["creationflags"] = subprocess.CREATE_NO_WINDOW
+
+        current_ffmpeg_proc = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            **extra_popen_args
+        )
         stdout, stderr = current_ffmpeg_proc.communicate()
 
         if current_ffmpeg_proc.returncode != 0:
