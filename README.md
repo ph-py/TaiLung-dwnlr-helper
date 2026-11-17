@@ -25,7 +25,7 @@ Works independently on any web page or directly from the player URL.
 ### How to install requirements via terminal (Ubuntu / Debian / Mint):
 ```bash
 sudo apt update
-sudo apt install -y python3 ffmpeg
+sudo apt install -y python3 ffmpeg git
 ```
 
 ---

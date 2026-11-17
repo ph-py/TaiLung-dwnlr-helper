@@ -25,7 +25,7 @@ Funciona de forma independente em qualquer site da web ou diretamente no link do
 ### Como instalar os requisitos no terminal (Ubuntu / Debian / Mint):
 ```bash
 sudo apt update
-sudo apt install -y python3 ffmpeg
+sudo apt install -y python3 ffmpeg git
 ```
 
 ---
