@@ -76,12 +76,11 @@ function atualizarWidgetFlutuante() {
 
   let widget = document.getElementById('tailung-floating-widget');
   if (!widget) {
-    const iconUrl = chrome.runtime.getURL('tai_lung-48.png');
     widget = document.createElement('div');
     widget.id = 'tailung-floating-widget';
     widget.innerHTML = `
       <div id="pv-header">
-        <span id="pv-title"><img src="${iconUrl}" alt="" width="18" height="18" style="vertical-align: middle; border-radius: 3px;"> TaiLung (1080p)</span>
+        <span id="pv-title"><img id="pv-title-icon" alt="" width="18" height="18" style="vertical-align: middle; border-radius: 3px;"> TaiLung (1080p)</span>
         <button id="pv-close" title="Minimizar">✕</button>
       </div>
       <div id="pv-body">
@@ -94,6 +93,10 @@ function atualizarWidgetFlutuante() {
         <div id="pv-status-text">Pronto</div>
       </div>
     `;
+    const iconImg = widget.querySelector('#pv-title-icon');
+    if (iconImg) {
+      iconImg.src = chrome.runtime.getURL('tai_lung-48.png');
+    }
     document.body.appendChild(widget);
 
     document.getElementById('pv-close').onclick = () => {
