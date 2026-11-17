@@ -58,27 +58,55 @@ TaiLung-dwnlr-helper/
 
 ## 🚀 Instalação Passo a Passo
 
-### Passo 1: Registrar o Host Nativo no Firefox (Linux)
-Abra o seu terminal na pasta raiz do projeto e execute o instalador:
+### Método 1: Instalação pelo `.xpi` Assinado (Recomendado - Definitiva)
 
-```bash
-bash native_host/install_host.sh
-```
+Este é o método recomendado para uso diário. A extensão fica instalada permanentemente no Firefox e não é removida ao fechar o navegador, dispensando o modo de depuração (`about:debugging`).
+
+1. **Instalar os Pré-requisitos (Linux):**
+   ```bash
+   sudo apt update && sudo apt install -y python3 ffmpeg git
+   ```
+
+2. **Registrar o Host Nativo (Linux):**
+   Clone o repositório e execute o instalador automático:
+   ```bash
+   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
+   cd TaiLung-dwnlr-helper
+   bash native_host/install_host.sh
+   ```
+
+3. **Instalar a Extensão no Firefox (.xpi):**
+   * Acesse a página de [Releases](https://github.com/ph-py/TaiLung-dwnlr-helper/releases) do repositório.
+   * Baixe o arquivo **`.xpi`** mais recente (ex: `tailung_downloader-0.1.1.xpi`).
+   * Arraste o arquivo `.xpi` para dentro de qualquer janela do Firefox (ou abra o arquivo pelo navegador) e clique em **"Adicionar"**.
+
+Pronto! A extensão **TaiLung Downloader** já estará instalada e pronta para uso definitivo.
 
 ---
 
-### Passo 2: Carregar a Extensão no Firefox
-1. Abra o Mozilla Firefox e acesse na barra de endereços:
-   ```text
-   about:debugging#/runtime/this-firefox
-   ```
-2. Clique no botão **"Carregar extensão temporária..."** (*Load Temporary Add-on...*);
-3. Navegue até o diretório do projeto e selecione o arquivo:
-   ```text
-   tailung-dwnlr/manifest.json
+### Método 2: Instalação pelo Código-Fonte / Desenvolvimento (via `about:debugging`)
+
+Utilize este método se você deseja testar alterações locais no código ou contribuir com o projeto:
+
+1. **Clonar e Configurar o Host Nativo:**
+   ```bash
+   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
+   cd TaiLung-dwnlr-helper
+   bash native_host/install_host.sh
    ```
 
-Pronto! A extensão **TaiLung Downloader** já estará ativa e pronta para uso.
+2. **Carregar Extensão Temporária no Firefox:**
+   * Abra o Mozilla Firefox e acesse na barra de endereços:
+     ```text
+     about:debugging#/runtime/this-firefox
+     ```
+   * Clique no botão **"Carregar extensão temporária..."** (*Load Temporary Add-on...*).
+   * Navegue até o diretório do projeto e selecione o arquivo:
+     ```text
+     tailung-dwnlr/manifest.json
+     ```
+
+*(Nota: Extensões carregadas temporariamente via `about:debugging` são descarregadas automaticamente ao fechar o Firefox).*
 
 ---
 

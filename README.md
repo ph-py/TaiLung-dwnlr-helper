@@ -56,29 +56,57 @@ TaiLung-dwnlr-helper/
 
 ---
 
-## 🚀 Step-by-Step Installation
+## 🚀 Installation
 
-### Step 1: Register the Native Host in Firefox (Linux)
-Open your terminal in the project root directory and run the installer:
+### Method 1: Installing via Signed `.xpi` (Recommended - Permanent)
 
-```bash
-bash native_host/install_host.sh
-```
+This is the recommended method for regular use. The extension remains permanently installed across Firefox restarts without requiring Developer Mode or `about:debugging`.
+
+1. **Install Prerequisites (Linux):**
+   ```bash
+   sudo apt update && sudo apt install -y python3 ffmpeg git
+   ```
+
+2. **Register the Native Host (Linux):**
+   Clone the repository and run the automated installer:
+   ```bash
+   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
+   cd TaiLung-dwnlr-helper
+   bash native_host/install_host.sh
+   ```
+
+3. **Install the Firefox Extension (.xpi):**
+   * Go to the [Releases](https://github.com/ph-py/TaiLung-dwnlr-helper/releases) page.
+   * Download the latest **`.xpi`** file (e.g., `tailung_downloader-0.1.1.xpi`).
+   * Drag and drop the `.xpi` file into any Firefox window (or open it with Firefox) and click **"Add"**.
+
+Done! The **TaiLung Downloader** extension is permanently installed and ready to use.
 
 ---
 
-### Step 2: Load the Extension in Firefox
-1. Open Mozilla Firefox and navigate to:
-   ```text
-   about:debugging#/runtime/this-firefox
-   ```
-2. Click on the **"Load Temporary Add-on..."** button;
-3. Browse to the project directory and select the file:
-   ```text
-   tailung-dwnlr/manifest.json
+### Method 2: Installing from Source / Development (via `about:debugging`)
+
+Use this method if you want to inspect, modify, or develop features for the extension:
+
+1. **Clone and Setup the Native Host:**
+   ```bash
+   git clone https://github.com/ph-py/TaiLung-dwnlr-helper.git
+   cd TaiLung-dwnlr-helper
+   bash native_host/install_host.sh
    ```
 
-Done! The **TaiLung Downloader** extension is now active and ready for use.
+2. **Load Temporary Add-on in Firefox:**
+   * Open Mozilla Firefox and navigate to:
+     ```text
+     about:debugging#/runtime/this-firefox
+     ```
+   * Click **"Load Temporary Add-on..."** (*Carregar extensão temporária...*).
+   * Browse to the project folder and select:
+     ```text
+     tailung-dwnlr/manifest.json
+     ```
+
+*(Note: Extensions loaded via `about:debugging` are temporary and unloaded when Firefox closes).*
 
 ---
 
