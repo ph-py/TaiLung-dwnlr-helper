@@ -130,7 +130,7 @@ function atualizarWidgetFlutuante() {
         btn.disabled = true;
         btn.innerText = 'FFmpeg não encontrado';
         btn.className = 'error';
-        if (statusText) statusText.innerText = 'Instale o FFmpeg no Linux (sudo apt install ffmpeg).';
+        if (statusText) statusText.innerText = 'FFmpeg não detectado. Execute o instalador do host (install_host) e verifique o FFmpeg no PATH.';
       }
     });
 

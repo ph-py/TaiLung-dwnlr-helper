@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       ffmpegOk = false;
       ffmpegBadge.className = 'badge-ffmpeg badge-err';
       ffmpegBadge.innerText = 'FFmpeg: Ausente';
-      statusDesc.innerText = 'Instale o FFmpeg (sudo apt install ffmpeg) para habilitar o download.';
+      statusDesc.innerText = 'Certifique-se de que o FFmpeg está instalado e execute o install_host.';
     }
     atualizarBotao();
   });

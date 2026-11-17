@@ -133,7 +133,7 @@ async function iniciarDownload(urlOuEmbed, tituloInformado) {
   if (!port) {
     downloadState = {
       status: "ERROR",
-      message: "Não foi possível conectar ao host nativo (tailung_helper). Execute install_host.sh."
+      message: "Não foi possível conectar ao host nativo (tailung_helper). Execute o install_host (.bat ou .sh)."
     };
     broadcastState();
     return;
